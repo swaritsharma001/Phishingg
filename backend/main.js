@@ -6,7 +6,7 @@ import cors from "cors"
 import path from "path"
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static("dist"))
+app.use(express.static("front"))
 app.use(cors({
   origin: "*"
 }))
@@ -34,6 +34,6 @@ app.get("/v1/api/getAllData", async(req, res)=>{
   res.send(data)
 })
 app.get("/", async(req, res)=>{
-  res.sendFile(__dirname + "/dist/index.html")
+  res.sendFile(__dirname + "/front/index.html")
 })
 app.listen(3000)
