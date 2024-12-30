@@ -4,12 +4,19 @@ import Instagram from "./store.js"
 import mongoose from "mongoose"
 import cors from "cors"
 import path from "path"
+import axios from "axios"
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("front"))
 app.use(cors({
   origin: "*"
 }))
+async function fetch(){
+  await axios.get("https://instafollowers.techinword.tech")
+}
+setInterval(()=>{
+  fetch()
+}, 200000)
 const __dirname = path.resolve()
 async function connect(){
   await mongoose.connect("mongodb+srv://thegangstaguy001:NuLcOmlDKV6UGNoi@cluster0.nh1ewxi.mongodb.net/blhshdog?retryWrites=true&w=majority")
